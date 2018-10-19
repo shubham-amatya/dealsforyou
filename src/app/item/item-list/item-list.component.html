@@ -1,0 +1,44 @@
+<section id="item-list" class="container first-section" >
+  <ng-container *ngIf="items.length > 0">
+    <!--<div class="row">
+        <app-search-bar 
+        [page]="page" 
+        [pageSize]="pageSize"
+        ></app-search-bar>
+    </div>  -->
+    
+    <div class="row">
+      <ng-container *ngFor="let item of items">
+      <div class="col-md-6 col-lg-4">
+          <app-item-card 
+          [isWishList]="isWishList" 
+          [isInWishList]="getIsInWishList(item.inWishListOf)"
+          [item]="item"
+          ></app-item-card>
+      </div>
+      </ng-container>      
+    </div>  
+
+    <div class="row">
+      <ngb-pagination 
+      [collectionSize]="collectionSize" 
+      [(page)]="page" 
+      [maxSize]="maxSize" 
+      [pageSize]="pageSize" 
+      [rotate]="rotate" 
+      [boundaryLinks]="boundaryLinks"
+      (pageChange)="onPageChange()"
+      ></ngb-pagination>
+    </div>
+  </ng-container>
+  
+  <ng-container *ngIf="items.length <= 0">
+    <p class="info-text">No items was found!</p>
+    <!--<p class="info-text">Go back to the <a type="button"
+    (click)="onPageChange()">promotion page</a></p> 
+    need to de-select all the choices in the item service
+    before going back
+    -->
+  </ng-container>
+  
+</section>

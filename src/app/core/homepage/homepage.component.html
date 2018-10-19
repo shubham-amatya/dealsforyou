@@ -1,0 +1,10 @@
+<section id="home-page" class="hero-image">
+    <div class="hero-inner d-flex flex-column">
+        <h1>Deals For You!</h1>
+        <!--<h2>Get started by taking a look at the</h2>-->
+        <a routerLink="/promotions" class="text-uppercase">Promotion list</a>
+        <p class="or">or</p>
+        <a routerLink="/auth/login" class="text-uppercase" *ngIf="!userIsAuthenticated">Login</a>
+        <a routerLink="/wishlist" class="text-uppercase" *ngIf="userIsAuthenticated">Wishlist</a>
+    </div>
+</section>

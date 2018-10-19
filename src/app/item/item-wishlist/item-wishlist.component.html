@@ -1,0 +1,29 @@
+<section id="item-wishlist" class="container first-section">
+  <ng-container *ngIf="wishlist.length > 0">
+    <div class="row">
+      <ng-container *ngFor="let item of wishlist">
+        <div class="col-md-6 col-lg-4">
+        <app-item-card 
+        [isWishList]="isWishList" 
+        [item]="item"
+        ></app-item-card>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="row">
+      <ngb-pagination 
+      [collectionSize]="collectionSize" 
+      [(page)]="page" 
+      [maxSize]="maxSize" 
+      [pageSize]="pageSize" 
+      [rotate]="rotate" 
+      [boundaryLinks]="boundaryLinks" 
+      (pageChange)="onPageChange()" 
+      ></ngb-pagination>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="wishlist.length <= 0">
+    <p class="info-text">No items was found!</p>
+  </ng-container>
+</section>

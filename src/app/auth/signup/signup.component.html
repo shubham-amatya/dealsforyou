@@ -1,0 +1,38 @@
+<section id="signup-form" class="hero-image">
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()" class="hero-inner col-sm-6 col-md-4 col-xl-3">
+        
+        <h1 class="h3 mb-4 font-weight-normal text-center">Signup Form</h1>
+        
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" autofocus formControlName="email" #email>
+
+            <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="alert alert-danger">
+
+                <div *ngIf="emailInput.errors.required">
+                    The email address is required.
+                </div>
+                <div *ngIf="emailInput.errors.email">
+                    Please enter a valid email address.
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" formControlName="password" #password>
+
+            <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="alert alert-danger">
+
+                <div *ngIf="passwordInput.errors.required">
+                    The password is required.
+                </div>
+                <div *ngIf="passwordInput.errors.minlength">
+                    Your password must be at least 6 characters long.
+                </div>
+            </div>
+        </div>
+
+        <input [disabled]="!signupForm.valid" type="submit" value="Submit" class="btn btn-primary" />
+    </form>
+</section>

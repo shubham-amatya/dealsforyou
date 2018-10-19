@@ -1,0 +1,56 @@
+<form class="form-inline my-2 my-lg-0"
+[formGroup]="searchForm" (ngSubmit)="onSubmit()">
+<div class="form-group">
+
+  <div class="btn-group mr-3">
+    <label for="findByTitle" class="sr-only">Find by title</label>
+    <input (change)="onChange()" id="findByTitle" type="text" class="form-control" aria-label="Text input to search by title"
+    formControlName="search" #search>
+    <button [disabled]="!searchForm.valid" type="submit" class="btn btn-primary">
+    <i class="fas fa-search"></i>
+    </button>  
+  </div>  
+  
+  <!--<div *ngIf="searchInput.invalid && (searchInput.dirty || searchInput.touched)" class="alert alert-danger">
+    <div *ngIf="searchInput.errors.required">
+    The search term is required.</div>
+    <div *ngIf="searchInput.errors.minlength">
+    Your search term must be at least 3 characters long.</div>
+  </div>-->
+
+</div>
+</form>
+
+<!--<form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>-->
+
+<!--
+<div class="form-group">
+  <label for="sortByPrice">Sort by price:</label>
+  <select class="form-control" id="sortByPrice" (change)="sort($event)" sortBy="sortByPrice">
+    <option sortBy="sortByPrice" orderToSort="-1">Descending</option>
+    <option sortBy="sortByPrice" orderToSort="+1">Ascending</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="findByWebsite">Filter by website</label>
+  <select class="form-control" id="findByWebsite" (change)="find($event)" findBy="findByWebsite">
+    <option disabled selected value hidden> -- select an option -- </option>
+    <option value>All websites</option>
+    <option>www.adayroi.com</option>
+    <option>tiki.vn</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="findByCategory">Filter by category</label>
+  <select class="form-control" id="findByCategory" (change)="find($event)" findBy="findByCategory">
+    <option disabled selected value hidden> -- select an option -- </option>
+    <option value>All categories</option>
+    <option>Laptop</option>
+  </select>
+</div>
+-->

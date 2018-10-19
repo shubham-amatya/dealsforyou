@@ -1,0 +1,39 @@
+<div class="form-group dropdown-item">
+  <label for="sortByPrice">Sort by price:</label>
+  <select class="form-control" id="sortByPrice" (change)="sort($event)" sortBy="sortByPrice">
+    <option disabled selected value hidden> -- select an option -- </option>
+    <option sortBy="sortByDiscount" orderToSort="-1" value="">Not set</option>
+    <option sortBy="sortByPrice" orderToSort="-1">Descending</option>
+    <option sortBy="sortByPrice" orderToSort="+1">Ascending</option>
+  </select>
+</div>
+
+<div class="form-group dropdown-item">
+  <label for="sortByDiscount">Sort by discount:</label>
+  <select class="form-control" id="sortByDiscount" (change)="sort($event)" sortBy="sortByDiscount">
+    <option disabled selected value hidden> -- select an option -- </option>
+    <option sortBy="sortByDiscount" orderToSort="-1" value="">Not set</option>
+    <option sortBy="sortByDiscount" orderToSort="-1">Descending</option>
+    <option sortBy="sortByDiscount" orderToSort="+1">Ascending</option>
+  </select>
+</div>
+
+<div class="form-group dropdown-item">
+  <label for="findByWebsite">Filter by website</label>
+  <select class="form-control" id="findByWebsite" (change)="find($event)" findBy="findByWebsite">
+    <option disabled selected value hidden> -- select an option -- </option>
+    <option value>All websites</option>
+    <option>www.adayroi.com</option>
+    <option>tiki.vn</option>
+  </select>
+</div>
+
+<div class="form-group dropdown-item">
+  <label for="findByCategory">Filter by category</label>
+  <select class="form-control" id="findByCategory" (change)="find($event)" findBy="findByCategory">
+    <option disabled selected value hidden> -- select an option -- </option>
+    <option value>All categories</option>
+    <option>Laptop</option>
+  </select>
+</div>
+

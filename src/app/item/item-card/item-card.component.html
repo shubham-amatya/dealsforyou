@@ -1,0 +1,50 @@
+<div class="card mb-4 box-shadow">
+    <a href="{{'https://' + item.hostname + item.URL}}" target="_blank">
+            <img class="card-img-top" data-src="{{item.image}}" alt="{{item.title}}">
+        </a>
+    <div class="card-body">
+        <a href="{{'https://' + item.hostname + item.URL}}" target="_blank">
+            <p class="card-title">{{item.title}}</p>
+            <!--<p class="card-text">{{item._id}}</p>-->
+            <div class="row">
+                <div class="col-8">
+                    <p class="card-text lead font-weight-bold">{{item.currentPrice | currency:'VND':'code':'0.0-0'}}</p>
+                    <del class="card-text">{{item.originalPrice | currency:'VND':'code':'0.0-0'}}</del>
+                </div>
+                <div class="col-4">
+                    <span class="lead font-weight-bold card-text">{{-item.discount/100 | percent}}</span>
+                </div>
+            </div>
+
+
+            <!--<div ng-init="limit = 150; moreShown = false">
+                {{item.title | limitTo: limit}}{{item.title.length > limit ? '...' : ''}}
+                <a ng-show="item.title.length > limit" href ng-click="limit=item.title.length; moreShown = true">More</a>
+                <a ng-show="moreShown" href ng-click="limit=150; moreShown=false"> Less </a>
+            </div>-->
+
+
+
+            <!--<span class="price-new">$1280</span> <del class="price-old">$1980</del>-->
+
+        </a>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="btn-group" *ngIf="!isWishList && IsAuthenticated">
+                <button (click)="addToWishList($event)" [disabled]="isInWishList || disabled" type="button" class="btn btn-sm btn-outline-secondary">
+                    <ng-container *ngIf="!isInWishList">
+                        Add to wishlist
+                    </ng-container>
+                    <ng-container *ngIf="isInWishList">
+                        Added to wishlist
+                    </ng-container>
+                    </button>
+            </div>
+            <div class="btn-group" *ngIf="isWishList">
+                <button (click)="removeFromWishList()" type="button" class="btn btn-sm btn-outline-secondary">
+                    Remove from wishlist
+                    </button>
+            </div>
+            <!--<small class="text-muted">9 mins</small>-->
+        </div>
+    </div>
+</div>
