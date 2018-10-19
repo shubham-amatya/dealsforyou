@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://localhost/api/v1"
+  apiUrl: "https://webdevbootcamp-lhminh.c9users.io/api/v1"
 };
