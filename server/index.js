@@ -4,11 +4,11 @@ const app = express();
 const path = require("path");
 require("./shared/connect-mongo").connecMongo();
 
-require("./crawlers/adayroi/adayroi.index").adayroi();
+//require("./crawlers/adayroi/adayroi.index").adayroi();
 require("./crawlers/tiki/tiki.index").tiki();
 setInterval(() => {
     require("./crawlers/adayroi/adayroi.index").adayroi();
-    require("./crawlers/tiki/tiki.index").tiki();
+    //require("./crawlers/tiki/tiki.index").tiki();
 }, 3600000);
 
 const itemRoutes = require("./routes/item.routing");

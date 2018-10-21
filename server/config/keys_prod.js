@@ -1,5 +1,5 @@
 module.exports = {
-  MONGODB_URI: process.env.MONGODB_URI,
+  MONGODB_URI: "mongodb://heroku_r3lvv27x:653aninc2v5ul8a6431pqpcmli@ds135993.mlab.com:35993/heroku_r3lvv27x",
   PORT: process.env.PORT,
-  JWT_KEY: process.env.JWT_KEY
+  JWT_KEY: 'secret'
 };

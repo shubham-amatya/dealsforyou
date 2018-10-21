@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --host $IP --port $PORT --public-host $C9_HOSTNAME",
     "build": "ng build --prod --build-optimizer && nodemon server/index.js",
+    "deploy": "cd server && gcloud app deploy",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

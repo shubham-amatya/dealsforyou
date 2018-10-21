@@ -10,6 +10,20 @@ exports.script = async() => {
     percentage: '.c1hkC1'
   };
   try {
+    await new Promise((resolve, reject) => {
+      let totalHeight = 0;
+      let distance = 100;
+      let timer = setInterval(() => {
+        let scrollHeight = document.body.scrollHeight;
+        window.scrollBy(0, distance);
+        totalHeight += distance;
+        if(totalHeight >= scrollHeight){
+          clearInterval(timer);
+          resolve();
+        }
+      }, 100);
+    });
+    
     const data = [];
     
     const items = document.querySelectorAll('.c2prKC');

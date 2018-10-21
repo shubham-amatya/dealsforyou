@@ -6,14 +6,8 @@ module.exports.tiki = async function () {
   try {
     //await connectMongo.connecMongo();
     const browser = await puppeteer.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--single-process'
-      ],
-    });
+  args: ['--no-sandbox']
+});
     const page = await browser.newPage();
     // enable console.log command in the script
     await page.on('console', msg => {

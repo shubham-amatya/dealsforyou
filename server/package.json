@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "8.11.3",
+    "node": ">=8",
     "npm": "6.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --watch './**/*.ts' --ignore './**/*.spec.ts' --exec ts-node ./index.ts",
+    "start": "node index.js",
     "all": "cd .. && ng build && cd server && nodemon --watch './**/*.ts' --ignore './**/*.spec.ts' --exec ts-node ./index.ts",
     "prod": "tsc --build"
   },
