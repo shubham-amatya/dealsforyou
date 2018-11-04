@@ -17,21 +17,21 @@
       <li class="nav-item" *ngIf="userIsAuthenticated">
         <a class="nav-link" routerLink="/wishlist" (click)="resetSearchParamsToDefault()">Wishlist</a>
       </li>
-      <li class="nav-item dropdown" *ngIf="userIsAuthenticated" ngbDropdown>
+      <li class="nav-item dropdown" autoClose="outside" *ngIf="userIsAuthenticated" ngbDropdown>
         <button class="nav-link dropdown-toggle btn btn-primary" ngbDropdownToggle>User</button>
         <div class="dropdown-menu" ngbDropdownMenu>
           <a class="dropdown-item" routerLink="/auth/changepassword">Change Password</a>
           <button class="dropdown-item" (click)="onLogout()">Logout</button>
         </div>
       </li>
-      <li class="nav-item dropdown" autoClose="outside" ngbDropdown>
+      <li class="nav-item dropdown" autoClose="outside" *ngIf="isListComponent" ngbDropdown>
         <button class="nav-link dropdown-toggle btn btn-primary" type="button" ngbDropdownToggle>Sort & Filter</button>
         <div class="dropdown-menu" ngbDropdownMenu>
           <app-sort-filter></app-sort-filter>
         </div>
       </li>
     </ul>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" *ngIf="isListComponent">
       <li class="nav-item">
         <app-search-bar></app-search-bar>
       </li>

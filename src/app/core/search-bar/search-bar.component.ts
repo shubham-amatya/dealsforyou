@@ -47,7 +47,7 @@ export class SearchBarComponent implements OnInit {
   onChange() {
     if(this.searchInput.invalid && (this.searchInput.dirty || this.searchInput.touched)){
       if(this.searchInput.errors.required){
-        this.flashMessagesService.show('The search term is required.', { cssClass: 'alert-success', timeout: 3000 });
+        this.flashMessagesService.show('The search term is required.', { cssClass: 'alert-danger', timeout: 3000 });
       } 
       /*if(this.searchInput.errors.minlength){
         this.flashMessagesService.show('The search term must be at least 3 characters long.', { cssClass: 'alert-success', timeout: 3000 });

@@ -8,11 +8,11 @@
             <!--<p class="card-text">{{item._id}}</p>-->
             <div class="row">
                 <div class="col-8">
-                    <p class="card-text lead font-weight-bold">{{item.currentPrice | currency:'VND':'code':'0.0-0'}}</p>
-                    <del class="card-text">{{item.originalPrice | currency:'VND':'code':'0.0-0'}}</del>
+                    <p class="card-text lead font-weight-bold">{{item.currentPrice | currency:'VND ':'code':'0.0-0'}}</p>
+                    <del class="card-text">{{item.originalPrice | currency:'VND ':'code':'0.0-0'}}</del>
                 </div>
                 <div class="col-4">
-                    <span class="lead font-weight-bold card-text">{{-item.discount/100 | percent}}</span>
+                    <span class="discount lead font-weight-bold card-text">{{-item.discount/100 | percent}}</span>
                 </div>
             </div>
 
