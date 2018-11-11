@@ -6,7 +6,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 
 import { AuthService } from "../../auth/auth.service";
 import { ItemService } from "../../item/item.service";
-
+import { defaultQuery } from "../../item/default-query.config";
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isNavbarCollapsed = true;
   
   isListComponent: boolean;
+  navbarBackgroundColor: string;
   
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -35,18 +36,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
       if(
         this.location.path() === '/promotions' ||
         this.location.path() === '/wishlist'
-        /*window.location.pathname === '/promotions' ||
-        window.location.pathname === '/wishlist'*/
       ) 
       {
         this.isListComponent = true;
-        //console.log(this.location.path());
+        //this.navbarBackgroundColor = '#007bff!important'; 
       } 
       else {
         this.isListComponent = false;
+        //this.navbarBackgroundColor = 'white!important'; 
       }
     });
-    
     
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
@@ -57,21 +56,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   
   resetSearchParamsToDefault() {
-    this.itemService.query = {
-      pageSize: 10,
-      page: 1,
-      findByTitle: '',
-      findByWebsite: '',
-      findByCategory: '',
-      sortByPrice: '',
-      sortByDiscount: '' 
-    };
+    this.itemService.query = defaultQuery;
     if(window.location.pathname === '/promotions') {
       this.itemService.getItems();
     } else if(window.location.pathname === '/wishlist') {
       this.itemService.getWishListItems();
     }
-    //this.itemService.getItems();
   }
 
   onLogout() {

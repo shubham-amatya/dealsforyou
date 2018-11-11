@@ -12,8 +12,6 @@ import { AuthService } from "../../auth/auth.service";
 export class ItemCardComponent implements OnInit {
   @Input() isWishList;
   @Input() item;
-  //@Input() pageSize;
-  //@Input() page;
   @Input() isInWishList;
   disabled = false;
   IsAuthenticated = false;
@@ -28,15 +26,18 @@ export class ItemCardComponent implements OnInit {
   }
   
   addToWishList(event) {
+    event.target.innerHTML = 'Adding...';
+    this.disabled = true; 
     this.itemService.addToWishList(this.item._id)
     .subscribe(res => {
       event.target.innerHTML = 'Added to wishlist';
-      this.disabled = true;  
     }, error => {});
     this.itemService.getWishListItems();
   }
   
-  removeFromWishList() {
+  removeFromWishList(event) {
+    event.target.innerHTML = 'Removing...';
+    this.disabled = true; 
     this.itemService.removeFromWishList(this.item._id)
     .subscribe(res => {
       //this.isInWishList = false;  

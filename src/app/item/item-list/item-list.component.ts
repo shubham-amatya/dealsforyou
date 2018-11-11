@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Subscription } from 'rxjs';
 
 import { Item } from "../item.model";
 import { ItemService } from "../item.service";
 import { AuthService } from "../../auth/auth.service";
+import { defaultPagination } from "../default-pagination.config";
 
 @Component({
   selector: 'app-item-list',
@@ -16,12 +17,44 @@ export class ItemListComponent implements OnInit, OnDestroy {
   
   items: Item[] = [];
   
-  collectionSize = 10;
-  maxSize = 10;
-  pageSize = 10;
-  page = 1;
-  rotate = true;
-  boundaryLinks = true;
+  collectionSize = defaultPagination.collectionSize;
+  maxSize = defaultPagination.maxSize;
+  pageSize = defaultPagination.pageSize;
+  page = defaultPagination.page;
+  rotate = defaultPagination.rotate;
+  boundaryLinks = defaultPagination.boundaryLinks;
+
+  setPaginationSizes() {
+    if (window.innerWidth <= 320) {
+      this.maxSize = 1;
+      this.pageSize = 9;
+    }
+    else if (window.innerWidth <= 375) {
+      this.maxSize = 3;
+      this.pageSize = 9;
+    }
+    else if (window.innerWidth <= 425) {
+      this.maxSize = 5;
+      this.pageSize = 9;
+    }
+    else if (window.innerWidth <= 768) {
+      this.maxSize = 5;
+      this.pageSize = 8;
+    }
+    else if (window.innerWidth <= 992) {
+      this.maxSize = 10;
+      this.pageSize = 8;
+    }
+    else if (window.innerWidth > 992) {
+      this.maxSize = 10;
+      this.pageSize = 9;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.setPaginationSizes();
+  }
   
   private itemsSub: Subscription;
   
@@ -33,12 +66,17 @@ export class ItemListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.spinnerService.show();
+  
+    this.setPaginationSizes();
+    
     this.itemService.query.page = this.page;      
     this.itemService.query.pageSize = this.pageSize;
+    
     this.itemService.getItems();
     setInterval(() => {
       this.itemService.getItems();
-    }, 60000);
+    }, 3600000);
+    
     this.itemsSub = this.itemService
     .getItemsListener()
     .subscribe((itemData: { items: Item[]; collectionSize: number }) => {
@@ -50,6 +88,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
   
   onPageChange() {
     this.spinnerService.show();
+    window.scroll(0,0);
     this.itemService.query.page = this.page;      
     this.itemService.query.pageSize = this.pageSize;
     this.itemService.getItems();

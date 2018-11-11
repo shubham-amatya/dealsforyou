@@ -56,36 +56,13 @@ export class SearchBarComponent implements OnInit {
   }
   
   onSubmit() {
-    //this._flashMessagesService.show('We are in about component!', { cssClass: 'alert-success', timeout: 1000 });
-    //console.warn(this.signupForm.value)
-    //console.warn(this.searchInput.invalid)
-    //const findBy = event.target.getAttribute('findBy');
-    //const valueToFind = event.target.value.toLowerCase();
-    /*console.log(findBy);
-    console.log(valueToFind);*/
-    const findBy = 'findByTitle';
-    //const valueToFind = this.searchForm.value.search;
-    //this.itemService.query[findBy] = valueToFind;
-    this.itemService.query = {
-          pageSize: 10,
-          page: 1,
-          findByTitle: this.searchForm.value.search,
-          findByWebsite: '',
-          findByCategory: '',
-          sortByPrice: '',
-          sortByDiscount: ''    
-    };
+    //const findBy = 'findByTitle';
+    this.itemService.query['findByTitle'] = this.searchForm.value.search;
     if(window.location.pathname === '/promotions') {
       this.itemService.getItems();
-      //console.log(findBy);
-      //console.log(valueToFind);
     } else if(window.location.pathname === '/wishlist') {
       this.itemService.getWishListItems();
-      //console.log(findBy);
-      //console.log(valueToFind);
     }
-    //this.searchForm.value.search='';
-    
   }
 
   search(event) {

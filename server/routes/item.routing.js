@@ -4,9 +4,6 @@ const router = express.Router();
 const ItemController = require("../controllers/item.controller");
 const checkAuth = require("../middlewares/check-auth.middleware");
 
-router.get('/SortByCurrentPriceDescending'.toLowerCase(), ItemController.SortByCurrentPriceDescending);
-router.get('/SortByDiscountPercentageDescending'.toLowerCase(), ItemController.SortByDiscountPercentageDescending);
-router.get('/SearchByHost'.toLowerCase(), ItemController.SearchByHost);
 router.get('/', ItemController.getItems);
 router.get('/:userId/wishlist', checkAuth, ItemController.getWishListItems);
 router.put('/:userId/wishlist/:itemId', checkAuth, ItemController.addToWishList);

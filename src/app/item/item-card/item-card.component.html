@@ -40,7 +40,7 @@
                     </button>
             </div>
             <div class="btn-group" *ngIf="isWishList">
-                <button (click)="removeFromWishList()" type="button" class="btn btn-sm btn-outline-secondary">
+                <button (click)="removeFromWishList($event)" [disabled]="disabled" type="button" class="btn btn-sm btn-outline-secondary">
                     Remove from wishlist
                     </button>
             </div>

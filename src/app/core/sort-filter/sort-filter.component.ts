@@ -13,22 +13,13 @@ export class SortFilterComponent implements OnInit {
     private itemService: ItemService  
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   sort(event) {
     const sortBy = event.target.getAttribute('sortBy');
     let orderToSort = ''; 
-    if (event.target.value === 'Ascending'){
-      orderToSort = '+1';
-    }
-    if (event.target.value === 'Descending'){
-      orderToSort = '-1';
-    }
-    /*(event.target.value === 'Ascending') ? orderToSort = '+1': false;
-    (event.target.value === 'Descending') ? orderToSort = '-1': false;*/
-    console.log(event.target.value);
-    console.log(orderToSort);
+    (event.target.value === 'Ascending') ? orderToSort = '+1': false;
+    (event.target.value === 'Descending') ? orderToSort = '-1': false;
     this.itemService.query[sortBy] = orderToSort;
     if(window.location.pathname === '/promotions') {
       this.itemService.getItems();
@@ -40,8 +31,6 @@ export class SortFilterComponent implements OnInit {
   find(event) {
     const findBy = event.target.getAttribute('findBy');
     const valueToFind = event.target.value.toLowerCase();
-    console.log(findBy);
-    console.log(valueToFind);
     this.itemService.query[findBy] = valueToFind;
     if(window.location.pathname === '/promotions') {
       this.itemService.getItems();

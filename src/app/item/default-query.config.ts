@@ -1,4 +1,4 @@
-export let query = {
+export const defaultQuery = {
   pageSize: 10,
   page: 1,
   findByTitle: '',
@@ -7,4 +7,3 @@ export let query = {
   sortByPrice: '',
   sortByDiscount: ''    
 }
-
