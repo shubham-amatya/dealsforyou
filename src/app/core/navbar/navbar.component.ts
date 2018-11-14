@@ -49,10 +49,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe(isAuthenticated => {
-        this.userIsAuthenticated = isAuthenticated;
-      });
+    .getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.userIsAuthenticated = isAuthenticated;
+    });
   }
   
   resetSearchParamsToDefault() {

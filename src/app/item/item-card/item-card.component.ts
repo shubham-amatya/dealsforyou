@@ -31,8 +31,9 @@ export class ItemCardComponent implements OnInit {
     this.itemService.addToWishList(this.item._id)
     .subscribe(res => {
       event.target.innerHTML = 'Added to wishlist';
+      this.itemService.getWishListItems();
     }, error => {});
-    this.itemService.getWishListItems();
+    
   }
   
   removeFromWishList(event) {
@@ -41,8 +42,9 @@ export class ItemCardComponent implements OnInit {
     this.itemService.removeFromWishList(this.item._id)
     .subscribe(res => {
       //this.isInWishList = false;  
+      this.itemService.getWishListItems();
     }, error => {});
-    this.itemService.getWishListItems();
+    
   }
   
   
