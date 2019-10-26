@@ -17,7 +17,7 @@ a[_ngcontent-c6], a[_ngcontent-c6]:hover {
     text-align:center;
     color:#fff;
     background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-    url('https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg');
+    url('../assets/images/city.jpg');
     background-size:cover;
     background-position:center center;
     background-repeat:no-repeat;
@@ -35,7 +35,7 @@ a[_ngcontent-c6], a[_ngcontent-c6]:hover {
         font-size: 1.2rem;
         color: white;
     }
-    .or::before, 
+    .or::before,
     .or::after {
         content: "";
         width: 70px;
@@ -68,5 +68,5 @@ a[_ngcontent-c6], a[_ngcontent-c6]:hover {
     top: 90px;
 }
 ngb-pagination {
- margin: auto;   
+ margin: auto;
 }
