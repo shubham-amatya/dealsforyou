@@ -14,8 +14,8 @@ import { ItemCardComponent } from './item-card/item-card.component';
     NgbDropdownModule
   ],
   declarations: [
-    ItemListComponent, 
-    ItemWishlistComponent, 
+    ItemListComponent,
+    ItemWishlistComponent,
     ItemCardComponent
   ]
 })

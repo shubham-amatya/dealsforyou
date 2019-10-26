@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { ErrorInterceptor } from './error-interceptor';
+import { ItemModule } from './item/item.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ErrorInterceptor } from './error-interceptor';
     HttpClientModule,
     FlashMessagesModule.forRoot(),
     Ng4LoadingSpinnerModule.forRoot(),
-    CoreModule
+    CoreModule,
+    ItemModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -16,19 +16,19 @@ const serverUrl = environment.apiUrl + "/item";
 @Injectable({ providedIn: 'root' })
 export class ItemService {
   query = defaultQuery;
-  
+
   private items: Item[] = [];
   private newItems = new Subject<{ items: Item[]; collectionSize: number }>();
-  
+
   private wishlist: Item[] = [];
   private newWishList = new Subject<{ wishlist: Item[]; collectionSize: number }>();
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private router: Router,
     private authService: AuthService,
   ) { }
-  
+
   getItems() {
     const queryParams = `?pagesize=${this.query.pageSize}&page=${this.query.page}&sortbyprice=${this.query.sortByPrice}&sortbydiscount=${this.query.sortByDiscount}&findbywebsite=${this.query.findByWebsite}&findbycategory=${this.query.findByCategory}&findbytitle=${this.query.findByTitle}`;
     this.http.get<{message: string, messageType: string, items: Item[], collectionSize: number}>
@@ -49,24 +49,24 @@ export class ItemService {
         });
       });
   }
-  
+
   getItemsListener() {
     return this.newItems.asObservable();
   }
-  
+
   getWishListListener() {
     return this.newWishList.asObservable();
   }
-  
+
   getWishListItems() {
     const userId = this.authService.getUserId();
     const queryParams = `?pagesize=${this.query.pageSize}&page=${this.query.page}&sortbyprice=${this.query.sortByPrice}&sortbydiscount=${this.query.sortByDiscount}&findbywebsite=${this.query.findByWebsite}&findbycategory=${this.query.findByCategory}&findbytitle=${this.query.findByTitle}`;
     this.http.get<{
-      message: string, 
+      message: string,
       messageType: string,
-      wishlist: Item[], 
+      wishlist: Item[],
       collectionSize: number
-    
+
     }>
     (`${serverUrl}/${userId}/wishlist${queryParams}`)
     .pipe(
@@ -85,15 +85,15 @@ export class ItemService {
         });
       });
   }
-    
-  addToWishList(itemId: string) {    
+
+  addToWishList(itemId: string) {
     const userId = this.authService.getUserId();
     return this.http.put(`${serverUrl}/${userId}/wishlist/${itemId}`, {});
   }
-  
+
   removeFromWishList(itemId: string){
     const userId = this.authService.getUserId();
-    return this.http.delete(`${serverUrl}/${userId}/wishlist/${itemId}`);    
+    return this.http.delete(`${serverUrl}/${userId}/wishlist/${itemId}`);
   }
 }
 

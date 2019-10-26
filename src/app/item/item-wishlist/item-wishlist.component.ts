@@ -13,7 +13,7 @@ import { defaultPagination } from "../default-pagination.config";
 })
 export class ItemWishlistComponent implements OnInit, OnDestroy {
   isWishList = true;
-  
+
   wishlist: Item[] = [];
   private wishListSub: Subscription;
 
@@ -23,12 +23,12 @@ export class ItemWishlistComponent implements OnInit, OnDestroy {
   page = defaultPagination.page;
   rotate = defaultPagination.rotate;
   boundaryLinks = defaultPagination.boundaryLinks;
-  
+
   constructor(
     private spinnerService: Ng4LoadingSpinnerService,
     private itemService: ItemService,
   ) { }
-  
+
   setPaginationSizes() {
     if (window.innerWidth <= 320) {
       this.maxSize = 1;
@@ -55,7 +55,7 @@ export class ItemWishlistComponent implements OnInit, OnDestroy {
       this.pageSize = 9;
     }
   }
-  
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.setPaginationSizes();
@@ -63,17 +63,17 @@ export class ItemWishlistComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.spinnerService.show();
-  
+
     this.setPaginationSizes();
-  
-    this.itemService.query.page = this.page;      
+
+    this.itemService.query.page = this.page;
     this.itemService.query.pageSize = this.pageSize;
-  
+
     this.itemService.getWishListItems();
     setInterval(() => {
       this.itemService.getWishListItems();
     }, 3600000);
-  
+
     this.wishListSub = this.itemService
     .getWishListListener()
     .subscribe((wishListData: { wishlist: Item[]; collectionSize: number }) => {
@@ -82,15 +82,15 @@ export class ItemWishlistComponent implements OnInit, OnDestroy {
       this.collectionSize = wishListData.collectionSize;
     });
   }
-  
+
   onPageChange() {
     this.spinnerService.show();
     window.scroll(0,0);
-    this.itemService.query.page = this.page;      
+    this.itemService.query.page = this.page;
     this.itemService.query.pageSize = this.pageSize;
     this.itemService.getWishListItems();
   }
-  
+
   ngOnDestroy() {
     if(this.wishListSub){
       this.wishListSub.unsubscribe();
